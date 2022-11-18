@@ -5,6 +5,6 @@ const { get, getDetail, register, edit } = require("../controllers/users");
 router.get("/", get);
 router.get("/:id", getDetail);
 router.post("/register", register);
-router.put("/edit/:id", edit);
+router.put("/:id/edit", edit);
 
 module.exports = router;
