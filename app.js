@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const indexRouter = require('./src/routes/index')
 const usersRouter = require('./src/routes/users')
 const postRouter = require('./src/routes/post')
-const _authRouter = require('./src/_auth/_auth.route.js')
+const _authRouter = require('./src/_auth/_auth.route')
 
 const app = express()
 
