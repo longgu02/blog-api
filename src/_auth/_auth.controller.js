@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
   register: async (req, res) => {
-    let passwordHash
     try {
       const existedUsername = await User.findOne({
         username: req.body.username,
@@ -20,7 +19,6 @@ module.exports = {
       bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(req.body.password, salt, async (err, hash) => {
           if (err) throw err.message
-          // passwordHash = hash
           const newUser = new User({
             firstName: req.body?.firstName,
             lastName: req.body?.lastName,

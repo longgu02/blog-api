@@ -1,16 +1,16 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const postTagSchema = mongoose.Schema({
   postId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "PostDetail",
+    ref: 'PostDetail',
     required: true,
   },
   tagId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Tags",
+    ref: 'Tags',
     required: true,
   },
-});
+})
 
-module.export = mongoose.model("PostTag", postTagSchema);
+module.export = mongoose.model('PostTag', postTagSchema)
