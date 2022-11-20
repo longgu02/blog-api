@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const tagsSchema = mongoose.Schema({
   title: {
@@ -11,6 +11,6 @@ const tagsSchema = mongoose.Schema({
   slug: {
     type: String,
   },
-});
+})
 
-module.exports = mongoose.model("Tag", tagsSchema);
+module.exports = mongoose.model('Tag', tagsSchema)

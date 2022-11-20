@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const postDetailSchema = mongoose.Schema({
   title: {
@@ -14,7 +14,7 @@ const postDetailSchema = mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   summary: {
     type: String,
@@ -31,6 +31,6 @@ const postDetailSchema = mongoose.Schema({
   publishedAt: {
     type: Date,
   },
-});
+})
 
-module.exports = mongoose.model("PostDetail", postDetailSchema);
+module.exports = mongoose.model('PostDetail', postDetailSchema)
