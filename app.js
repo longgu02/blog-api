@@ -7,9 +7,9 @@ const logger = require('morgan')
 const mongoose = require('mongoose')
 
 const indexRouter = require('./src/routes/index')
-const usersRouter = require('./src/routes/users')
-const postRouter = require('./src/routes/post')
-const _authRouter = require('./src/_auth/_auth.route')
+const usersRouter = require('./src/routes/users.router')
+const postRouter = require('./src/routes/post.router')
+const _authRouter = require('./src/_auth/_auth.router')
 
 const app = express()
 
