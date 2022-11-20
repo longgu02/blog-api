@@ -18,7 +18,7 @@ module.exports = {
 
       bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(req.body.password, salt, async (err, hash) => {
-          if (err) throw err.message
+          if (err) throw { status: 500, message: err.message }
           const newUser = new User({
             firstName: req.body?.firstName,
             lastName: req.body?.lastName,
@@ -82,5 +82,24 @@ module.exports = {
       if (err) return res.status(403).json({ message: err.message })
       return res.json({ jwt: generateAccessToken({ username: user.username }) })
     })
+  },
+  changePassword: async (req, res) => {
+    try {
+      const matchedUser = await User.findOne({ _id: req.user?.id })
+      bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(req.body.password, salt, async (err, hash) => {
+          if (err) throw { status: 500, message: err.message }
+          matchedUser.passwordHash = hash
+          await matchedUser.save()
+          return res
+            .status(200)
+            .json({ status: 'Successfully', username: newUser.username })
+        })
+      })
+    } catch (err) {
+      return res
+        .status(err.status || 500)
+        .json({ status: 'Failed', message: err.message })
+    }
   },
 }
