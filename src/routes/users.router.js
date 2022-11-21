@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { get, getDetail, edit } = require('../controllers/users')
+const { get, getDetail, edit } = require('../controllers/users.controller')
 const {
   authenticate,
   adminAuthenticate,

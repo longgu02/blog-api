@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 
-const indexRouter = require('./src/routes/index')
-const usersRouter = require('./src/routes/users.router')
-const postRouter = require('./src/routes/post.router')
+// const usersRouter = require('./src/routes/users.router')
+// const postRouter = require('./src/routes/post.router')
+const routes = require('./src/routes')
 const _authRouter = require('./src/_auth/_auth.router')
 
 const app = express()
@@ -32,9 +32,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
-app.use('/posts', postRouter)
+// app.use('/users', usersRouter)
+// app.use('/posts', postRouter)
+routes.map((route) => {
+  app.use(route.path, route.router);
+})
 app.use('/auth', _authRouter)
 
 // catch 404 and forward to error handler
