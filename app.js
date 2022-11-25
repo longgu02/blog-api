@@ -5,6 +5,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
+var cors = require('cors');
 
 // const usersRouter = require('./src/routes/users.router')
 // const postRouter = require('./src/routes/post.router')
@@ -25,6 +26,7 @@ mongoose
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
+app.use(cors());
 
 app.use(logger('dev'))
 app.use(express.json())

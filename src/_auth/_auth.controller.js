@@ -102,4 +102,26 @@ module.exports = {
         .json({ status: 'Failed', message: err.message })
     }
   },
+  getUser: async (req, res) => {
+    jwt.verify(
+      req.headers.authorization,
+      process.env.ACCESS_TOKEN_SECRET,
+      async (err, user) => {
+        if (err) return res.status(403).json({ status: 'JWT not accepted' })
+        const matchedUser = await User.findOne({ username: user.username })
+        if (!matchedUser)
+          return res.status(403).json({ status: 'JWT not accepted' })
+        res
+          .status(200)
+          .json({
+            status: 'Accepted',
+            user: {
+              username: matchedUser.username,
+              firstName: matchedUser.firstName,
+              lastName: matchedUser.lastName,
+            },
+          })
+      }
+    )
+  },
 }

@@ -12,9 +12,10 @@ const postDetailSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  userId: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true
   },
   summary: {
     type: String,

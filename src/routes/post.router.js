@@ -1,9 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const { get, create, edit } = require('../controllers/post.controller')
+const {
+  get,
+  create,
+  edit,
+  slugQuery,
+} = require('../controllers/post.controller')
+const {
+  authenticate,
+  adminAuthenticate,
+} = require('../middlewares/auth.middleware')
+
 
 router.get('/', get)
-router.post('/create', create)
+router.get('/:slug', slugQuery)
+router.post('/create', authenticate, create)
 router.put('/:id/edit', edit)
 
 module.exports = router
