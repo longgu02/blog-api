@@ -17,7 +17,8 @@ module.exports = {
         content: req.body.content,
         user: req.user.id,
         slug: req.body.slug,
-        published: false,
+        summary: req.body.summary || '',
+        published: req.body.published || false,
         createAt: Date.now(),
       })
       await newPost.save()

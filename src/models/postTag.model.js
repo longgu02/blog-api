@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const postTagSchema = mongoose.Schema({
-  postId: {
+  post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'PostDetail',
     required: true,
   },
-  tagId: {
+  tag: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Tags',
     required: true,
