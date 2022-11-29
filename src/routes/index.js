@@ -3,8 +3,8 @@ const usersRouter = require('./users.router')
 
 module.exports = [
   {
-    path: '/posts',
+    path: '/api/v1/posts',
     router: postRouter,
   },
-  { path: '/users', router: usersRouter },
+  { path: '/api/v1/users', router: usersRouter },
 ]
