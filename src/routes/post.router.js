@@ -13,6 +13,7 @@ const {
 
 
 router.get('/', get)
+// router.get(':id/related', get)
 router.get('/:slug', slugQuery)
 router.post('/create', authenticate, create)
 router.put('/:id/edit', edit)

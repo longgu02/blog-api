@@ -2,7 +2,7 @@ const PostDetail = require('../models/postDetail.model')
 
 module.exports = {
   get: async (req, res) => {
-    const posts = await PostDetail.find({ published: true })
+    const posts = await PostDetail.find({ published: true }).populate('user')
     return res.json({ data: posts })
   },
   slugQuery: async (req, res) => {
